@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codexus - Inovação em Web e Sistemas</title>
+  <!-- Estilos e Fontes -->
+  <link rel="icon" href="imagens\iconesite.ico" type="image/x-icon" alt="Login">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilo Base */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #1f1f1f 0%, #3a3a3a 100%);
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animações Gerais */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, p {
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Navbar */
+.navbar {
+  padding: 1rem;
+  background: rgba(40, 167, 69, 0.9);
+  transition: background 0.3s ease;
+}
+
+.navbar:hover {
+  background: rgba(40, 167, 69, 1);
+}
+
+.navbar-brand .logo {
+  max-height: 50px;
+}
+
+.navbar-brand span {
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.navbar-brand:hover span {
+  color: #fff700;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff700;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Responsividade Navbar */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .nav-link {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+/* Header */
+header#home {
+  position: relative;
+  background-image: url('imagens/fundo.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  animation: backgroundAnimation 20s infinite alternate ease-in-out;
+}
+
+@keyframes backgroundAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Seções Gerais */
+section {
+  padding: 60px 0;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  color: #28a745;
+  text-align: center;
+}
+
+section p {
+  font-size: 1.25rem;
+  color: #c7c7c7;
+  text-align: center;
+}
+
+/* Responsividade Seções */
+@media (max-width: 768px) {
+  section h2 {
+    font-size: 2rem;
+  }
+
+  section p {
+    font-size: 1rem;
+  }
+}
+
+/* Sobre Nós */
+#sobre {
+  background: linear-gradient(135deg, #1f1f1f 0%, #3a3a3a 100%);
+}
+
+#sobre .col-md-4 {
+  margin-bottom: 20px;
+}
+
+#sobre i {
+  margin-bottom: 15px;
+}
+
+/* Portfólio */
+#portfolio {
+  background: #121212;
+}
+
+.portfolio-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.portfolio-item {
+  margin: 0 auto;
+}
+
+.portfolio-image {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  width: 100%;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+.card-body {
+  background-color: #000; /* Fundo preto */
+  color: #fff;           /* Texto branco para contraste */
+  padding: 10px;         /* Espaçamento interno */
+  border-bottom-left-radius: 10px; /* Alinha com bordas da imagem */
+  border-bottom-right-radius: 10px;
+}
+
+/* Cards Preços */
+.card {
+  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-body ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Botões */
+.btn {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #28a745;
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Responsividade Geral */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img  src="imagens\codexus.png" alt="Login" width="30" height="30" class="rounded-circle me-2" alt="Codexus Logo">
+            <span class="fw-bold">Codexus</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+                <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+                <li class="nav-item"><a class="nav-link" href="#precos">Preços</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header id="home" class="text-center text-light py-5">
+    <div class="overlay"></div>
+    <div class="container content">
+        <h1 class="display-3">Codexus</h1>
+        <p class="lead">Criamos soluções que impulsionam o futuro da sua empresa.</p>
+        <a href="#servicos" class="btn btn-success btn-lg">Saiba Mais</a>
+    </div>
+</header>
+
+
+
+  <!-- Sobre Nós -->
+  <section id="sobre" class="py-5">
+    <div class="container text-center">
+        <h2 class="text-success mb-4">Sobre Nós</h2>
+        <p>Somos especializados no desenvolvimento de soluções digitais que promovem inovação e performance. Atuamos em Santa Gertrudes e Rio Claro, oferecendo serviços para pequenas, médias e grandes empresas.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fas fa-code fa-3x text-success mb-3"></i>
+                <h4 class="text-branco">Inovação</h4>
+                <p>Soluções modernas e tecnológicas para otimizar seu negócio.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-lightbulb fa-3x text-success mb-3"></i>
+                <h4 class="text-branco">Criatividade</h4>
+                <p>Design exclusivo e funcional adaptado a cada cliente.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-users fa-3x text-success mb-3"></i>
+                <h4 class="text-branco">Resultados</h4>
+                <p>Foco no sucesso e na satisfação do seu negócio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- Serviços -->
+  <section id="servicos" class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Nossos Serviços</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Desenvolvimento Web</h4>
+                <p>Sites responsivos e dinâmicos para destacar sua empresa no ambiente digital.</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Sistemas Desktop</h4>
+                <p>Softwares eficientes para otimizar os processos do seu negócio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--portifolio-->
+<section id="portfolio" class="portfolio-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4" data-aos="fade-down">Portfólio apps desktop</h2>
+        <div class="portfolio-gallery">
+            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card border-0 shadow">
+                    <img src="imagens\cadastro.jpg" alt="Projeto 1" class="img-fluid card-img-top portfolio-image rounded">
+                    <div class="card-body text-center bg-dark">
+                        <p class="card-text text-light">Projeto 1</p>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card border-0 shadow">
+                    <img src="imagens\home.jpg" alt="Projeto 2" class="img-fluid card-img-top portfolio-image rounded">
+                    <div class="card-body text-center bg-dark">
+                        <p class="card-text text-light">Projeto 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card border-0 shadow">
+                    <img src="imagens\lista.jpg" alt="Projeto 3" class="img-fluid card-img-top portfolio-image rounded">
+                    <div class="card-body text-center bg-dark">
+                        <p class="card-text text-light">Projeto 3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card border-0 shadow">
+                    <img src="imagens\login.jpg" alt="Projeto 4" class="img-fluid card-img-top portfolio-image rounded">
+                    <div class="card-body text-center bg-dark">
+                        <p class="card-text text-light">Projeto 4</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+  
+  
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <!-- Preços -->
+  <section id="precos" class="precos bg-dark py-5">
+    <div class="container">
+        <!-- Título -->
+        <h2 class="text-center text-light mb-5">Nossos Planos Web (Sites)</h2>
+        <div class="row text-center">
+            <!-- Planos Web -->
+            <!-- Plano Básico -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-lg border-0">
+                    <img src="imagens\preço1.png" alt="Login" class="card-img-top">
+                    <div class="card-header bg-danger text-white">Básico</div>
+                    <div class="card-body bg-dark">
+                        <p><strong>Preço Original:</strong> <s>R$ 600</s></p>
+                        <h4 class="text-danger">R$ 300</h4>
+                        <ul class="list-unstyled">
+                            <li class="text-white">✔ Site funcional *php*(sem domínio próprio)</li>
+                            <li class="text-white">❌ Sem banco de dados</li>
+                            <li class="text-white">✔ Layout responsivo</li>
+                            <li class="text-white">✔ Suporte básico (1 mês)</li>
+                        </ul>
+                        <p class="text-white">* Custos extras (Opicionais)*</p>
+                        <p class="text-white">Domínio próprio: R$ 100/ano<br> Banco de dados: R$ 50/mês</p>
+                        <button class="btn btn-success btn-block contact-whatsapp" 
+                                data-plan="Plano Desktop Básico" 
+                                data-price="R$ 400">
+                            Contatar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plano Médio -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-lg border-0">
+                    <img src="imagens\preço2.png" alt="Login" class="card-img-top">
+                    <div class="card-header bg-warning text-white">Médio</div>
+                    <div class="card-body bg-dark">
+                        <p><strong>Preço Original:</strong> <s>R$ 900</s></p>
+                        <h4 class="text-warning">R$ 630</h4>
+                        <ul class="list-unstyled">
+                            <li class="text-white">✔ Site com banco de dados em Python</li>
+                            <li class="text-white">❌ Sem domínio próprio</li>
+                            <li class="text-white">✔ Uso de Django</li>
+                            <li class="text-white">✔ Suporte intermediário (1 mês)</li>
+                        </ul>
+                        <p class="text-white">* Custos extras (Opicionais)*</p>
+                        <p class="text-white"> Domínio próprio: R$ 150/ano<br> Banco de dados: R$ 50/mês</p>
+                        <button class="btn btn-success btn-block contact-whatsapp" 
+                                data-plan="Plano Desktop Básico" 
+                                data-price="R$ 400">
+                            Contatar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plano Avançado -->
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="card shadow-lg border-0">
+                    <img src="imagens\preço3.png" alt="Login" class="card-img-top">
+                    <div class="card-header bg-success text-white">Avançado</div>
+                    <div class="card-body bg-dark">
+                        <p><strong>Preço Original:</strong> <s>R$ 1200</s></p>
+                        <h4 class="text-success">R$ 1020</h4>
+                        <ul class="list-unstyled">
+                            <li class="text-white">✔ Site com domínio próprio e banco de dados</li>
+                            <li class="text-white">✔ Desenvolvimento em Python</li>
+                            <li class="text-white">✔ Suporte avançado (1 mês)</li>
+                            <p class="text-white">* Custos extras (Opicionais)*</p>
+                            <p class="text-white"> Banco de dados: R$ 75/mês</p>
+                        </ul>
+                        <button class="btn btn-success btn-block contact-whatsapp" 
+                                data-plan="Plano Desktop Básico" 
+                                data-price="R$ 400">
+                            Contatar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Título para Planos Desktop -->
+        <h2 class="text-center text-light mt-5 mb-5">Nossos Planos Desktop (Local)</h2>
+        <div class="row text-center">
+            <!-- Planos Desktop -->
+            <!-- Plano Básico -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-lg border-0">
+                    <img src="imagens\preço4.png" alt="Login" class="card-img-top">
+                    <div class="card-header bg-secondary text-white">Básico</div>
+                    <div class="card-body bg-dark">
+                        <p><strong>Preço Original:</strong> <s>R$ 800</s></p>
+                        <h4 class="text-danger">R$ 400</h4>
+                        <ul class="list-unstyled">
+                            <li class="text-white">✔ Funcionalidades básicas</li>
+                            <li class="text-white">❌ Sem banco de dados</li>
+                            <li class="text-white">✔ Interface intuitiva</li>
+                            <li class="text-white">✔ Suporte básico (1 mês)</li>
+                        </ul>
+                        <p class="text-white">* Custos extras (Opicionais)*</p>
+                        <p class="text-white">Banco de dados: R$ 50/mês</p>
+                        <button class="btn btn-success btn-block contact-whatsapp" 
+                                data-plan="Plano Desktop Básico" 
+                                data-price="R$ 400">
+                            Contatar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plano Médio -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-lg border-0">
+                    <img src="imagens\preço5.png" alt="Login" class="card-img-top">
+                    <div class="card-header bg-info text-white">Médio</div>
+                    <div class="card-body bg-dark">
+                        <p><strong>Preço Original:</strong> <s>R$ 1000</s></p>
+                        <h4 class="text-warning">R$ 700</h4>
+                        <ul class="list-unstyled">
+                            <li class="text-white">✔ Com banco de dados em Python</li>
+                            <li class="text-white">✔ Suporte intermediário (1 mês)</li>
+                        </ul>
+                        <p class="text-white">* Custos extras (Opicionais)*</p>
+                        <p class="text-white">Banco de dados: R$ 50/mês</p>
+                        <button class="btn btn-success btn-block contact-whatsapp" 
+                                data-plan="Plano Desktop Básico" 
+                                data-price="R$ 400">
+                            Contatar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plano Avançado -->
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="card shadow-lg border-0">
+                    <img src="imagens\preço6.png" alt="Login" class="card-img-top">
+                    <div class="card-header bg-primary text-white">Avançado</div>
+                    <div class="card-body bg-dark">
+                        <p><strong>Preço Original:</strong> <s>R$ 1200</s></p>
+                        <h4 class="text-success">R$ 1020</h4>
+                        <ul class="list-unstyled">
+                            <li class="text-white">✔ Banco de dados e funcionalidades avançadas</li>
+                            <li class="text-white">✔ Desenvolvimento em Python</li>
+                            <li class="text-white">✔ Suporte avançado (1 mês)</li>
+                        </ul>
+                        <p class="text-white">* Custos extras (Opicionais)*</p>
+                        <p class="text-white">Banco de dados: R$ 75/mês</p>
+                        <button class="btn btn-success btn-block contact-whatsapp" 
+                                data-plan="Plano Desktop Básico" 
+                                data-price="R$ 400">
+                            Contatar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Contato -->
+  <section id="contato" class="py-5">
+    <div class="container text-center">
+        <h2 class="text-success mb-4">Contato</h2>
+        <p class="text-branco">Entre em contato conosco por meio do formulário abaixo:</p>
+        <form action="processa_contato.php" method="post" id="contactForm">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control bg-secondary text-white" name="nome" placeholder="Nome" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <input type="email" class="form-control bg-secondary text-white" name="email" placeholder="E-mail" required>
+                </div>
+            </div>
+            <textarea class="form-control mb-3 bg-secondary text-white" name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Enviar</button>
+        </form>
+    </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-success text-center text-white py-4">
+    <p>&copy; 2024 Codexus. Todos os direitos reservados.</p>
+  </footer>
+  <script>
+    
+document.addEventListener("DOMContentLoaded", function() {
+    const whatsappLink = "https://wa.me/5519998980252";
+
+    // Função para capturar e enviar os dados do plano
+    document.querySelectorAll(".contact-whatsapp").forEach(button => {
+        button.addEventListener("click", function() {
+            const plan = this.getAttribute("data-plan");
+            const price = this.getAttribute("data-price");
+
+            const message = encodeURIComponent(
+                `Olá! Estou interessado no ${plan} com o valor de ${price}. Gostaria de mais informações.`
+            );
+
+            // Redirecionar para o WhatsApp
+            window.open(`${whatsappLink}?text=${message}`, "_blank");
+        });
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // Navegação suave
+    const links = document.querySelectorAll('a.nav-link');
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Atualizar ano dinâmico no rodapé
+    const footerYear = document.querySelector('footer p');
+    footerYear.innerHTML = `&copy; ${new Date().getFullYear()} Codexus. Todos os direitos reservados.`;
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const icons = document.querySelectorAll('#sobre i');
+    icons.forEach(icon => {
+        icon.addEventListener('mouseover', () => {
+            icon.classList.add('hovered');
+        });
+        icon.addEventListener('mouseout', () => {
+            icon.classList.remove('hovered');
+        });
+    });
+});
+
+$(document).ready(function() {
+        AOS.init();
+        
+        $('.portfolio-item').on('click', function() {
+            var src = $(this).find('img').attr('src');
+            $('#modalImage').attr('src', src);
+            $('#imageModal').fadeIn();
+        });
+        
+        $('.close').on('click', function() {
+            $('#imageModal').fadeOut();
+        });
+    });
+
+    document.getElementById('contactForm').onsubmit = function(event) {
+            var nome = document.getElementsByName('nome')[0].value;
+            var email = document.getElementsByName('email')[0].value;
+            var mensagem = document.getElementsByName('mensagem')[0].value;
+
+            if (!nome || !email || !mensagem) {
+                alert('Todos os campos são obrigatórios!');
+                event.preventDefault();
+            }
+        };
+
+  </script>
+  <script src="{% static 'myapp/javascript/index.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
